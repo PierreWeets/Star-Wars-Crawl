@@ -1,0 +1,95 @@
+body {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 70%;
+    background-color: rgb(201, 201, 243);
+    font-family: 'Montserrat','Open Sans';
+    text-align: justify;
+}
+
+body::after { /*applies to the body AFTER the display of the body*/
+    
+    background-image: url("./assets/ressources/star-wars-backgrounds-25.jpg");
+    background-image: url("https://starwarsblog.starwars.com/wp-content/uploads/2020/04/star-wars-backgrounds-25.jpg");
+    
+    background-repeat: no-repeat;
+    background-attachment : fixed;
+    background-size: cover; 
+    opacity: 1;/*enables lighter background image, allowing more readable text, in the front layer*/
+    /*paramaters enabling the display of the background image*/
+    content: "";/*empty the content before adding the background image*/
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    z-index: -1;   
+  }
+
+div.empty-div-perspective {
+    position: relative;
+    height: 200px;
+    width: 500px;
+    margin: 0px;
+    padding: 0px;
+    perspective: 100px;/* perspective affects ONLY 3D transformed child element, inside the 'empty-div-perspective' element*/
+}
+div.div-perspective { /*= child element of 'empty-div-perspective' element*/ 
+    padding-left: 5rem;
+    padding-right: 5rem;
+    text-align: justify;
+    color : yellow;
+    perspective: 100px;
+    transform: rotateX(50deg);
+
+}
+
+div.evolutiveText {
+    animation-name: crawlingText;
+    animation-delay: 5s;
+    animation-duration: 15s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    position: relative;
+}
+  
+  @keyframes crawlingText {
+    from {top: 350px;}
+    to {top: 0px; }
+  }
+
+  div.introductionText{
+    color : blue;
+    margin: auto;
+
+    /*animation-name: introductionHidden;
+    animation-delay: 0s;
+    transition-timing-function: ease-in;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;*/
+    
+    animation: introductionHidden 0s 3s forwards;
+    animation-fill-mode: forwards;
+    /*visibility: visible;
+    opacity: 1;
+    transition: visibility 5s, opacity 5s step-end;*/
+
+}
+
+@keyframes introductionHidden {
+    to {
+        width:0;
+        height:0;
+        visibility:hidden;
+    }
+}
+
+div.introductionText:hover{
+    visibility: hidden;
+    opacity: 0;
+    }
+  /*@keyframes introduction {
+      from {visibility: visible;}
+      to {visibility: hidden;}
+
+  }*/
